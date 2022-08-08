@@ -3,7 +3,7 @@ import pandas as pd
 tool_trade_date_hist_sina_df = ak.tool_trade_date_hist_sina()
 
 trade_date_list = []
-for y in range(2022, 2023):
+for y in range(2019, 2020):
     for index, row in tool_trade_date_hist_sina_df.iterrows():
         trade_date = "{}{:0>2d}{:0>2d}".format(row["trade_date"].year, row["trade_date"].month, row["trade_date"].day)
         #print(type(row["trade_date"].year))
@@ -14,6 +14,10 @@ for y in range(2022, 2023):
     df = pd.DataFrame()
     for day in trade_date_list:
         zhangting_df = ak.stock_zt_pool_em(date=day)
+        print(day)
+        print(zhangting_df)
+        zhangting_df['date'] = day
+        #print(zhangting_df)
         #for index, row in zhangting_df.iterrows():
         #    print(row)
         df = pd.concat([df, zhangting_df])
