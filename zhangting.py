@@ -3,8 +3,8 @@ import pandas as pd
 import time
 tool_trade_date_hist_sina_df = ak.tool_trade_date_hist_sina()
 
-trade_date_list = []
-for y in range(2020, 2023):
+for y in range(1992, 2021):
+    trade_date_list = []
     for index, row in tool_trade_date_hist_sina_df.iterrows():
         trade_date = "{}{:0>2d}{:0>2d}".format(row["trade_date"].year, row["trade_date"].month, row["trade_date"].day)
         #print(type(row["trade_date"].year))
